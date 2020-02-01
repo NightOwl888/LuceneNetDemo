@@ -12,14 +12,17 @@ namespace LuceneNetDemo
             {
                 Console.WriteLine("FATAL: No GitHub API Key Provided");
                 Console.WriteLine("If calling from the CLI, you need to pass it as the first argument: 'LuceneNetDemo.exe <Your API Key>'");
-                Console.WriteLine("In Visual Studio, you can enter it into 'Command line arguments' under the Debug tab of this project's properties.");
+                Console.WriteLine("In Visual Studio, you can enter it into 'Application arguments' under the Debug tab of this project's properties.");
                 Console.WriteLine();
                 Console.WriteLine("Press a key to exit");
                 Console.ReadKey();
                 return;
             }
 
-            using (var indexDirectory = FSDirectory.Open(new DirectoryInfo(@"c:\github-index")))
+            // My Documents on Windows, personal folder on other OS
+            string personalFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+
+            using (var indexDirectory = FSDirectory.Open(Path.Combine(personalFolder, "github-index")))
             using (var ghi = new GitHubIndex(indexDirectory, args[0]))
             {
                 Console.WriteLine("Welcome to the Lucene.NET Demo!");

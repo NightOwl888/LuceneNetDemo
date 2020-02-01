@@ -18,7 +18,7 @@ using Directory = Lucene.Net.Store.Directory;
 
 namespace LuceneNetDemo
 {
-    public class GitHubIndex : IDisposable
+    public sealed class GitHubIndex : IDisposable
     {
         /// <summary>
         /// The match version ensures you can upgrade Lucene.Net to a future version
@@ -111,7 +111,12 @@ namespace LuceneNetDemo
                 string readmeHtml = "";
                 try
                 {
-                    readmeHtml = await github.Repository.Content.GetReadmeHtml(repo.Id);
+                    var getReadMeTask = github.Repository.Content.GetReadmeHtml(repo.Id);
+                    if (await Task.WhenAny(getReadMeTask, Task.Delay(TimeSpan.FromSeconds(30))) == getReadMeTask)
+                        readmeHtml = await getReadMeTask;
+                    else
+                        // Took longer than 30 seconds, so we will ignore this document
+                        continue;
                 }
                 catch (Octokit.NotFoundException /*ignored*/)
                 {
