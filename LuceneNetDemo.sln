@@ -5,10 +5,11 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C0037F8-03A9-448C-968B-DD3323762B67}"
 	ProjectSection(SolutionItems) = preProject
+		FUNDING.yml = FUNDING.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuceneNetDemo", "LuceneNetDemo\LuceneNetDemo.csproj", "{FD64A9F3-38E9-4039-A277-0BA09CB6ECCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuceneNetDemo", "LuceneNetDemo\LuceneNetDemo.csproj", "{FD64A9F3-38E9-4039-A277-0BA09CB6ECCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
