@@ -6,7 +6,7 @@
 
     <Description>Lucene.NET Demo Application</Description>
     
-    <LuceneNetPackageVersion>4.8.0-beta00007</LuceneNetPackageVersion>
+    <LuceneNetPackageVersion>4.8.0-beta00011</LuceneNetPackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
